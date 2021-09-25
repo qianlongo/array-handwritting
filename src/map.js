@@ -22,8 +22,8 @@ Array.prototype.map2 = function (callback, thisCtx) {
 let arr = [ 0, 1, 2, 3, 4,, 5 ]
 
 let arr2 = arr.map2(function (it, i, array) {
-  // console.log(it, i, array, this)
+  console.log(it, i, array, this)
   return it * it
-})
+}, { name: '前端胖头鱼' })
 
 console.log(arr2)
