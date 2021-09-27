@@ -8,7 +8,7 @@ Array.prototype.filter2 = function (callback, thisCtx) {
   let i = 0
 
   while (i < length) {
-    if (callback.call(thisCtx, this[ i ], i, this)) {
+    if (i in this && callback.call(thisCtx, this[ i ], i, this)) {
       newArray.push(this[ i ])
     }
     i++
@@ -17,11 +17,18 @@ Array.prototype.filter2 = function (callback, thisCtx) {
   return newArray
 }
 
-let arr = [ 0, 1, 2, 3, 4,, 5 ]
+let arr = [ 0, 1, 2, -3, 4,, 5 ]
 
-let arr2 = arr.filter2(function (it, i, array) {
-  console.log(it, i, array, this)
-  return it >= 3
-}, { name: '前端胖头鱼' })
+delete arr[6]
 
-console.log(arr2)
+let filterArr = arr.filter2((it) => it > 0)
+
+console.log(filterArr)
+
+
+// let arr2 = arr.filter2(function (it, i, array) {
+//   console.log(it, i, array, this)
+//   return it >= 3
+// }, { name: '前端胖头鱼' })
+
+// console.log(arr2)

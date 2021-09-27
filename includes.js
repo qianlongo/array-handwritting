@@ -5,7 +5,7 @@ Array.prototype.includes2 = function (targetEle, fromIndex) {
 
   // 数组为空或者从大于等于数组长度的地方开始检索，都直接是-1
   if (length === 0 || fromIndex >= length) {
-    return -1
+    return false
   }
   /*
     1. 从fromIndex开始搜索元素
@@ -16,7 +16,7 @@ Array.prototype.includes2 = function (targetEle, fromIndex) {
 
   while (i < length) {
     const value = this[ i ]
-
+    // 注意NaN情况
     if (targetEle === value || typeof targetEle === 'number' && typeof value === 'number' && isNaN(targetEle) && isNaN(value)) {
       return true
     }

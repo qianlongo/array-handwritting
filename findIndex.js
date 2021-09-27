@@ -7,7 +7,7 @@ Array.prototype.findIndex2 = function (callback, thisCtx) {
   let i = 0
 
   while (i < length) {
-    if (i in this && callback.call(thisCtx, this[ i ], i, this)) {
+    if (callback.call(thisCtx, this[ i ], i, this)) {
       return i
     }
 
@@ -19,9 +19,8 @@ Array.prototype.findIndex2 = function (callback, thisCtx) {
 
 let arr = [ 0, 1, 2, 3, 4,, 5 ]
 
-let index = arr.findIndex2(function (it, i, array) {
-  console.log(it, i, array, this)
-  return it > 3
-}, { name: '前端胖头鱼' })
+let index = arr.findIndex((it, i, array) => {
+  return it > 2
+})
 
 console.log(index)

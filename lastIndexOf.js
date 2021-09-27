@@ -26,8 +26,11 @@ Array.prototype.lastIndexOf2 = function (targetEle, fromIndex) {
   return -1
 }
 
-let arr = [ 0, 1, 2, 3, 4,, 5 ]
+let array = [2, 5, 9, 2]
 
-let targetEle = arr.lastIndexOf2(2)
-
-console.log(targetEle)
+console.log(array.lastIndexOf2(2)) // 3
+console.log(array.lastIndexOf2(7)) // -1
+console.log(array.lastIndexOf2(2, 3)) // 3
+console.log(array.lastIndexOf2(2, 2)) // 0
+console.log(array.lastIndexOf2(2, -2)) // 0
+console.log(array.lastIndexOf2(2, -1)) // 3

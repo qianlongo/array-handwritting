@@ -15,12 +15,30 @@ Array.prototype.forEach2 = function (callback, thisCtx) {
   }
 }
 
-// 测试
-let arr = [ 0, 1, 2, 3, 4,, 5 ]
 
-arr.forEach2(function (it, i, array) {
-  if (i === 2) {
-    arr.splice(3, 1)
+// 举个小例子
+let demoArr = [ 1, 2, 3, 4, , 5 ]
+
+// demoArr.forEach((it, i) => {
+//   if (i === 1) {
+//     // 后添加进去的不会被访问到
+//     demoArr.push(5)
+//   } else if (i === 2) {
+//     // 4将不会被访问到，相仿4-4会被访问到
+//     demoArr.splice(3, 1, '4-4')
+//   }
+
+//   console.log(it)
+// })
+
+demoArr.forEach2((it, i) => {
+  if (i === 1) {
+    // 后添加进去的不会被访问到
+    demoArr.push(5)
+  } else if (i === 2) {
+    // 4将不会被访问到，相仿4-4会被访问到
+    demoArr.splice(3, 1, '4-4')
   }
-  console.log(it, i, array, this)
-}, { name: '前端胖头鱼2' })
+
+  console.log(it)
+})

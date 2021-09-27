@@ -9,8 +9,7 @@ Array.prototype.map2 = function (callback, thisCtx) {
 
   while (i < length) {
     if (i in this) {
-      const newValue = callback.call(thisCtx, this[ i ], i, this)
-      newArray.push(newValue)
+      newArray.push(callback.call(thisCtx, this[ i ], i, this))
     }
 
     i++
@@ -20,6 +19,10 @@ Array.prototype.map2 = function (callback, thisCtx) {
 }
 
 let arr = [ 0, 1, 2, 3, 4,, 5 ]
+
+let newArr = arr.map((it) => it * it )
+
+console.log(newArr)
 
 let arr2 = arr.map2(function (it, i, array) {
   console.log(it, i, array, this)

@@ -17,11 +17,12 @@ Array.prototype.some2 = function (callback, thisCtx) {
   return false
 }
 
-let arr = [ 0, 1, 2, 3, 4,, 5 ]
+let emptyArr = []
+// 空数组直接返回true
+console.log(emptyArr.some2((it) => it > 0))
+let arr = [ 0, 1, 2, 3, 4,, 5, -1 ]
 
-let result = arr.some2(function (it, i, array) {
-  console.log(it, i, array, this)
-  return it > 3
-}, { name: '前端胖头鱼' })
+delete arr[7]
 
-console.log(result)
+console.log(arr.some2((it) => it < 0))
+console.log(arr.some2((it) => it > 0)) // true

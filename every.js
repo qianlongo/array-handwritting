@@ -16,12 +16,24 @@ Array.prototype.every2 = function (callback, thisCtx) {
 
   return true
 }
+/**
+// 举例
+let emptyArr = []
+// 空数组直接返回true
+console.log(emptyArr.every((it) => it > 0))
+let arr = [ 0, 1, 2, 3, 4,, 5, -1 ]
 
-let arr = [ 0, 1, 2, 3, 4,, 5 ]
+delete arr[7]
 
-let result = arr.every2(function (it, i, array) {
-  console.log(it, i, array, this)
-  return it >= 0
-}, { name: '前端胖头鱼' })
+console.log(arr.every((it) => it >= 0))
+**/
 
-console.log(result)
+// 举例
+let emptyArr = []
+// 空数组直接返回true
+console.log(emptyArr.every2((it) => it > 0))
+let arr = [ 0, 1, 2, 3, 4,, 5, -1 ]
+
+delete arr[7]
+
+console.log(arr.every2((it) => it >= 0))
